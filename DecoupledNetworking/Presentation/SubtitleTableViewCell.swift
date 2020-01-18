@@ -41,14 +41,16 @@ final class SubtitleTableViewCell: UITableViewCell {
         container.layer.cornerRadius = 8.0
         container.translatesAutoresizingMaskIntoConstraints = false
         addSubview(container)
-        container.autolayout.constrainEdges(
+        container.constrainEdges(
             to: self, insets: UIEdgeInsets(top: 8, left: 8, bottom: 0, right: 8)
         )
 
-        titleLabel.font = .systemFont(ofSize: 17, weight: .light)
-        subtitleLabel.font = .systemFont(ofSize: 14)
+        titleLabel.font = .systemFont(ofSize: 18, weight: .light)
+        titleLabel.textColor = .black
+       
+        subtitleLabel.font = .systemFont(ofSize: 14, weight: .medium)
         subtitleLabel.numberOfLines = 0
-        subtitleLabel.textColor = .gray
+        subtitleLabel.textColor = .lightGray
         
         let stackView = UIStackView()
         stackView.alignment = .fill
@@ -58,8 +60,8 @@ final class SubtitleTableViewCell: UITableViewCell {
         stackView.addArrangedSubview(subtitleLabel)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         container.addSubview(stackView)
-        stackView.autolayout.constrainEdges(
-            to: container, insets: UIEdgeInsets(equally: 16)
+        stackView.constrainEdges(
+            to: container, insets: UIEdgeInsets(value: 16)
         )
     }
 }

@@ -61,7 +61,7 @@ final class RetryView: UIView {
         stackView.spacing = 16
         stackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(stackView)
-        stackView.autolayout.constrainEdges(to: self)
+        stackView.constrainEdges(to: self)
         
         stackView.addArrangedSubview(imageView)
         stackView.addArrangedSubview(label)

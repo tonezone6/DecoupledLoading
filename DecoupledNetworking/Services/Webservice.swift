@@ -32,9 +32,9 @@ struct Webservice {
             return completion(.failure(Failure.invalidURL))
         }
         
-        let config = URLSessionConfiguration.default
-        config.timeoutIntervalForRequest = 8.0
-        let session = URLSession(configuration: config)
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 8.0
+        let session = URLSession(configuration: configuration)
         
         session.dataTask(with: url) { data, response, error in
             DispatchQueue.main.async {

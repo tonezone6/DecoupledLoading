@@ -12,6 +12,7 @@
 		FA1B2DE823D2CB03007E7E58 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B2DE723D2CB03007E7E58 /* TableViewDataSource.swift */; };
 		FA1B2DEA23D322FF007E7E58 /* RetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B2DE923D322FF007E7E58 /* RetryView.swift */; };
 		FA1B2DEC23D35156007E7E58 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B2DEB23D35156007E7E58 /* NavigationController.swift */; };
+		FA80B06B23D380A8006AFF31 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FA80B06A23D380A8006AFF31 /* README.md */; };
 		FAC21C0223D206C800383478 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC21C0123D206C800383478 /* DetailsViewController.swift */; };
 		FAC21C0823D20B9E00383478 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC21C0723D20B9E00383478 /* AppCoordinator.swift */; };
 		FAFAFD6223D1E4F800C4B683 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFAFD6123D1E4F800C4B683 /* AppDelegate.swift */; };
@@ -33,6 +34,7 @@
 		FA1B2DE723D2CB03007E7E58 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		FA1B2DE923D322FF007E7E58 /* RetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryView.swift; sourceTree = "<group>"; };
 		FA1B2DEB23D35156007E7E58 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		FA80B06A23D380A8006AFF31 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FAC21C0123D206C800383478 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		FAC21C0723D20B9E00383478 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		FAFAFD5E23D1E4F800C4B683 /* DecoupledNetworking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DecoupledNetworking.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +66,7 @@
 		FAFAFD5523D1E4F800C4B683 = {
 			isa = PBXGroup;
 			children = (
+				FA80B06A23D380A8006AFF31 /* README.md */,
 				FAFAFD6023D1E4F800C4B683 /* DecoupledNetworking */,
 				FAFAFD5F23D1E4F800C4B683 /* Products */,
 			);
@@ -193,6 +196,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA80B06B23D380A8006AFF31 /* README.md in Resources */,
 				FAFAFD6E23D1E4FA00C4B683 /* LaunchScreen.storyboard in Resources */,
 				FAFAFD6B23D1E4FA00C4B683 /* Assets.xcassets in Resources */,
 			);

@@ -9,21 +9,22 @@
 import UIKit
 
 final class LoadingViewController<T: Decodable>: UIViewController {
-    typealias Build = (T) -> UIViewController
-    
-    var coordinator: AppCoordinator?
-    
+    private var coordinator: AppCoordinator? // will be passed over to child view controllers
+
+    typealias Build = (T, AppCoordinator?) -> UIViewController
+        
     private var resource: Resource<T>
     private var build: Build
     
     private var spinner = UIActivityIndicatorView(style: .large)
     private var retry: RetryView?
     
-    init(resource: Resource<T>, build: @escaping Build) {
+    init(coordinator: AppCoordinator, resource: Resource<T>, build: @escaping Build) {
+        self.coordinator = coordinator
         self.resource = resource
         self.build = build
         super.init(nibName: nil, bundle: nil)
-
+        
         loadResource()
     }
 
@@ -38,7 +39,7 @@ final class LoadingViewController<T: Decodable>: UIViewController {
         
         spinner.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(spinner)
-        spinner.autolayout.center(to: view)
+        spinner.center(to: view)
         spinner.hidesWhenStopped = true
     }
 }
@@ -59,7 +60,7 @@ extension LoadingViewController {
             case .failure(let error):
                 self?.displayRetry(with: error.localizedDescription)
             case .success(let value):
-                if let content = self?.build(value) {
+                if let content = self?.build(value, self?.coordinator) {
                     self?.add(content: content)
                 }
             }
@@ -70,7 +71,7 @@ extension LoadingViewController {
         addChild(content)
         content.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(content.view)
-        content.view.autolayout.constrainEdges(to: view)
+        content.view.constrainEdges(to: view)
         content.didMove(toParent: self)
         
         content.view.alpha = 0
@@ -87,7 +88,7 @@ extension LoadingViewController {
         view.addSubview(retry)
         retry.widthAnchor.constraint(
             equalTo: view.widthAnchor, multiplier: 0.7).isActive = true
-        retry.autolayout.center(to: view)
+        retry.center(to: view)
         
         retry.delegate = self
     }

@@ -30,8 +30,8 @@ final class CardView: UIView {
         
         label.translatesAutoresizingMaskIntoConstraints = false
         addSubview(label)
-        label.autolayout.constrainEdges(
-            to: self, insets: UIEdgeInsets(equally: 32)
+        label.constrainEdges(
+            to: self, insets: UIEdgeInsets(value: 32)
         )
         
         layer.cornerRadius = 8.0

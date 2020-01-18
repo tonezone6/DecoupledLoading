@@ -9,18 +9,21 @@
 import UIKit
 
 final class ListViewController: UIViewController {
+    private var coordinator: AppCoordinator?
+    
     private var source: TableViewDataSource<Comment, SubtitleTableViewCell>?
     private var tableView = UITableView()
     
-    convenience init(items: [Comment]) {
+    convenience init(items: [Comment], coordinator: AppCoordinator?) {
         self.init()
+        self.coordinator = coordinator
         source = TableViewDataSource(
             items: items, reuseIdentifier: SubtitleTableViewCell.reuseIdentifier,
             configuration: { item, row, cell in
                 cell.configure(id: item.id, subtitle: item.name)
             },
             selection: { [weak self] item in
-                (self?.parent as? LoadingViewController<[Comment]>)?.coordinator?.pushDetails(item: item)
+                self?.coordinator?.pushDetails(item: item)
             }
         )
         tableView.dataSource = source
@@ -35,7 +38,7 @@ final class ListViewController: UIViewController {
         tableView.backgroundColor = .clear
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 14)
         tableView.separatorColor = .gray // using separators as shadow
-        tableView.autolayout.constrainEdges(to: view)
+        tableView.constrainEdges(to: view)
         tableView.register(SubtitleTableViewCell.self,
             forCellReuseIdentifier: SubtitleTableViewCell.reuseIdentifier
         )

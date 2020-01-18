@@ -8,13 +8,7 @@
 
 import UIKit
 
-protocol AutolayoutType where Self: UIView {}
-
-extension UIView: AutolayoutType {
-    var autolayout: AutolayoutType { return self }
-}
-
-extension AutolayoutType {
+extension UIView {
     func constrainEdges(to view: UIView, insets: UIEdgeInsets = .zero) {
         leadingAnchor.constraint(
             equalTo: view.leadingAnchor, constant: insets.left
