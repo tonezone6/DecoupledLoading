@@ -14,7 +14,7 @@ final class ListViewController: UIViewController {
     private var source: TableViewDataSource<Comment, SubtitleTableViewCell>?
     private var tableView = UITableView()
     
-    convenience init(items: [Comment], coordinator: AppCoordinator?) {
+    convenience init(coordinator: AppCoordinator?, items: [Comment]) {
         self.init()
         self.coordinator = coordinator
         source = TableViewDataSource(

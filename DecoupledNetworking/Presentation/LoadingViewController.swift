@@ -9,9 +9,7 @@
 import UIKit
 
 final class LoadingViewController<T: Decodable>: UIViewController {
-    private var coordinator: AppCoordinator? // will be passed over to child view controllers
-
-    typealias Build = (T, AppCoordinator?) -> UIViewController
+    typealias Build = (T) -> UIViewController
         
     private var resource: Resource<T>
     private var build: Build
@@ -19,8 +17,7 @@ final class LoadingViewController<T: Decodable>: UIViewController {
     private var spinner = UIActivityIndicatorView(style: .large)
     private var retry: RetryView?
     
-    init(coordinator: AppCoordinator, resource: Resource<T>, build: @escaping Build) {
-        self.coordinator = coordinator
+    init(resource: Resource<T>, build: @escaping Build) {
         self.resource = resource
         self.build = build
         super.init(nibName: nil, bundle: nil)
@@ -60,7 +57,7 @@ extension LoadingViewController {
             case .failure(let error):
                 self?.displayRetry(with: error.localizedDescription)
             case .success(let value):
-                if let content = self?.build(value, self?.coordinator) {
+                if let content = self?.build(value) {
                     self?.add(content: content)
                 }
             }

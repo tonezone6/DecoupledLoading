@@ -25,9 +25,10 @@ final class AppCoordinator: Coordinator {
     
     func start() {
         let vc = LoadingViewController(
-            coordinator: self,
             resource: Comment.allComments,
-            build: ListViewController.init
+            build: { comments in
+                ListViewController(coordinator: self, items: comments)
+            }
         )
         vc.title = Constants.Titles.items.rawValue
         navigationController.pushViewController(vc, animated: false)
@@ -35,9 +36,10 @@ final class AppCoordinator: Coordinator {
     
     func pushDetails(item: Comment) {
         let vc = LoadingViewController(
-            coordinator: self,
             resource: Comment.comment(with: item.id),
-            build: DetailsViewController.init
+            build: { comment in
+                DetailsViewController(coordinator: self, comment: comment)
+            }
         )
         vc.title = Constants.Titles.details.rawValue
         navigationController.pushViewController(vc, animated: true)

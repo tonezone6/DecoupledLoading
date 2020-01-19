@@ -13,7 +13,7 @@ final class DetailsViewController: UIViewController {
     
     private var cardView: CardView!
 
-    convenience init(comment: Comment, coordinator: AppCoordinator?) {
+    convenience init(coordinator: AppCoordinator?, comment: Comment) {
         self.init()
         self.coordinator = coordinator
         self.cardView = CardView(text: comment.body)
