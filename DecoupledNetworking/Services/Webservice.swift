@@ -8,35 +8,50 @@
 
 import Foundation
 
-struct Resource<T> {
-    let url: URL?
-    // more parameters here...
+typealias Parameters = [String : Any]
+
+enum Method {
+    case get, post(Parameters)
 }
 
-enum Failure: LocalizedError {
-    case decoding, invalidURL
-    
-    var errorDescription: String? {
+extension Method {
+    var name: String {
         switch self {
-        case .decoding:
-            return "There was an error reading the data."
-        case .invalidURL:
-            return "The URL trying to access is invalid."
+        case .get:  return "GET"
+        case .post: return "POST"
         }
+    }
+}
+
+struct Resource<T> {
+    let url: URL
+    let method: Method
+}
+
+extension URLRequest {
+    init<T>(resource: Resource<T>) {
+        self.init(url: resource.url)
+        self.httpMethod = resource.method.name
+        if case let .post(parameters) = resource.method {
+            self.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
+        }
+    }
+}
+
+extension URLSessionConfiguration {
+    static var customTimeout: URLSessionConfiguration {
+        let config = URLSessionConfiguration.default
+        config.timeoutIntervalForRequest = 8.0
+        return config
     }
 }
 
 struct Webservice {
     static func load<T: Decodable>(resource: Resource<T>, completion: @escaping (Result<T, Error>) -> Void) {
-        guard let url = resource.url else {
-            return completion(.failure(Failure.invalidURL))
-        }
+        let request = URLRequest(resource: resource)
         
-        let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = 8.0
-        let session = URLSession(configuration: configuration)
-        
-        session.dataTask(with: url) { data, response, error in
+        let session = URLSession(configuration: URLSessionConfiguration.customTimeout)
+        session.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {
                 if let error = error {
                     return completion(.failure(error))
@@ -50,5 +65,18 @@ struct Webservice {
                 }
             }
         }.resume()
+    }
+}
+
+enum Failure: LocalizedError {
+    case decoding
+}
+
+extension Failure {
+    var errorDescription: String? {
+        switch self {
+        case .decoding:
+            return "There was an error reading the data."
+        }
     }
 }

@@ -16,10 +16,16 @@ struct Comment: Decodable {
 // MARK: Resources
 extension Comment {
     static var allComments: Resource<[Comment]> {
-        return Resource(url: Constants.Endpoint.items.url)
+        return Resource(
+            url: Endpoint.items.url,
+            method: .get
+        )
     }
     
     static func comment(with id: Int) -> Resource<Comment> {
-        return Resource(url: Constants.Endpoint.item(id: id).url)
+        return Resource(
+            url: Endpoint.item(id: id).url,
+            method: .get
+        )
     }
 }
