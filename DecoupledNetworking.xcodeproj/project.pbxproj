@@ -8,17 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		FA05669A23D5D2F800CCF07F /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA05669923D5D2F800CCF07F /* Endpoint.swift */; };
+		FA05669C23D5D9F000CCF07F /* CachedWebservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA05669B23D5D9F000CCF07F /* CachedWebservice.swift */; };
+		FA05669E23D5F13400CCF07F /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA05669D23D5F13400CCF07F /* FileStorage.swift */; };
 		FA1B2DE423D248E8007E7E58 /* EdgeInsets+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B2DE323D248E8007E7E58 /* EdgeInsets+Init.swift */; };
 		FA1B2DE623D24A75007E7E58 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B2DE523D24A75007E7E58 /* CardView.swift */; };
-		FA1B2DE823D2CB03007E7E58 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B2DE723D2CB03007E7E58 /* TableViewDataSource.swift */; };
 		FA1B2DEA23D322FF007E7E58 /* RetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B2DE923D322FF007E7E58 /* RetryView.swift */; };
 		FA1B2DEC23D35156007E7E58 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B2DEB23D35156007E7E58 /* NavigationController.swift */; };
+		FA6D0D6F23DACB9E00C133CB /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D0D6E23DACB9E00C133CB /* TableViewController.swift */; };
 		FA80B06B23D380A8006AFF31 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FA80B06A23D380A8006AFF31 /* README.md */; };
 		FAC21C0223D206C800383478 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC21C0123D206C800383478 /* DetailsViewController.swift */; };
 		FAC21C0823D20B9E00383478 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC21C0723D20B9E00383478 /* AppCoordinator.swift */; };
 		FAFAFD6223D1E4F800C4B683 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFAFD6123D1E4F800C4B683 /* AppDelegate.swift */; };
 		FAFAFD6423D1E4F800C4B683 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFAFD6323D1E4F800C4B683 /* SceneDelegate.swift */; };
-		FAFAFD6623D1E4F800C4B683 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFAFD6523D1E4F800C4B683 /* ListViewController.swift */; };
 		FAFAFD6B23D1E4FA00C4B683 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAFAFD6A23D1E4FA00C4B683 /* Assets.xcassets */; };
 		FAFAFD6E23D1E4FA00C4B683 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAFAFD6C23D1E4FA00C4B683 /* LaunchScreen.storyboard */; };
 		FAFAFD7623D1E71B00C4B683 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFAFD7523D1E71B00C4B683 /* Webservice.swift */; };
@@ -31,18 +32,19 @@
 
 /* Begin PBXFileReference section */
 		FA05669923D5D2F800CCF07F /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		FA05669B23D5D9F000CCF07F /* CachedWebservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedWebservice.swift; sourceTree = "<group>"; };
+		FA05669D23D5F13400CCF07F /* FileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorage.swift; sourceTree = "<group>"; };
 		FA1B2DE323D248E8007E7E58 /* EdgeInsets+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EdgeInsets+Init.swift"; sourceTree = "<group>"; };
 		FA1B2DE523D24A75007E7E58 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		FA1B2DE723D2CB03007E7E58 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		FA1B2DE923D322FF007E7E58 /* RetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryView.swift; sourceTree = "<group>"; };
 		FA1B2DEB23D35156007E7E58 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		FA6D0D6E23DACB9E00C133CB /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		FA80B06A23D380A8006AFF31 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FAC21C0123D206C800383478 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		FAC21C0723D20B9E00383478 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		FAFAFD5E23D1E4F800C4B683 /* DecoupledNetworking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DecoupledNetworking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAFAFD6123D1E4F800C4B683 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAFAFD6323D1E4F800C4B683 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FAFAFD6523D1E4F800C4B683 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		FAFAFD6A23D1E4FA00C4B683 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAFAFD6D23D1E4FA00C4B683 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAFAFD6F23D1E4FA00C4B683 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -65,6 +67,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA6D0D7023DAD1B200C133CB /* Comment details */ = {
+			isa = PBXGroup;
+			children = (
+				FA1B2DE523D24A75007E7E58 /* CardView.swift */,
+				FAC21C0123D206C800383478 /* DetailsViewController.swift */,
+			);
+			path = "Comment details";
+			sourceTree = "<group>";
+		};
+		FA6D0D7123DAD1C500C133CB /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				FA1B2DE923D322FF007E7E58 /* RetryView.swift */,
+				FAFAFD7D23D1F8E700C4B683 /* LoadingViewController.swift */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
+		FA6D0D7223DAD1D100C133CB /* Comment list */ = {
+			isa = PBXGroup;
+			children = (
+				FAFAFD8323D2039700C4B683 /* SubtitleTableViewCell.swift */,
+				FA6D0D6E23DACB9E00C133CB /* TableViewController.swift */,
+			);
+			path = "Comment list";
+			sourceTree = "<group>";
+		};
 		FAFAFD5523D1E4F800C4B683 = {
 			isa = PBXGroup;
 			children = (
@@ -104,7 +133,6 @@
 			isa = PBXGroup;
 			children = (
 				FAFAFD7723D1EB8200C4B683 /* Comment.swift */,
-				FA1B2DE723D2CB03007E7E58 /* TableViewDataSource.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -114,6 +142,8 @@
 			children = (
 				FA05669923D5D2F800CCF07F /* Endpoint.swift */,
 				FAFAFD7523D1E71B00C4B683 /* Webservice.swift */,
+				FA05669D23D5F13400CCF07F /* FileStorage.swift */,
+				FA05669B23D5D9F000CCF07F /* CachedWebservice.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -130,13 +160,10 @@
 		FAFAFD8523D203B500C4B683 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				FAFAFD8323D2039700C4B683 /* SubtitleTableViewCell.swift */,
-				FA1B2DE523D24A75007E7E58 /* CardView.swift */,
-				FA1B2DE923D322FF007E7E58 /* RetryView.swift */,
 				FA1B2DEB23D35156007E7E58 /* NavigationController.swift */,
-				FAFAFD7D23D1F8E700C4B683 /* LoadingViewController.swift */,
-				FAFAFD6523D1E4F800C4B683 /* ListViewController.swift */,
-				FAC21C0123D206C800383478 /* DetailsViewController.swift */,
+				FA6D0D7123DAD1C500C133CB /* Loading */,
+				FA6D0D7223DAD1D100C133CB /* Comment list */,
+				FA6D0D7023DAD1B200C133CB /* Comment details */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -215,18 +242,19 @@
 				FA1B2DE623D24A75007E7E58 /* CardView.swift in Sources */,
 				FA1B2DE423D248E8007E7E58 /* EdgeInsets+Init.swift in Sources */,
 				FAFAFD7823D1EB8200C4B683 /* Comment.swift in Sources */,
+				FA6D0D6F23DACB9E00C133CB /* TableViewController.swift in Sources */,
 				FAC21C0823D20B9E00383478 /* AppCoordinator.swift in Sources */,
-				FAFAFD6623D1E4F800C4B683 /* ListViewController.swift in Sources */,
 				FAFAFD6223D1E4F800C4B683 /* AppDelegate.swift in Sources */,
 				FAFAFD8423D2039700C4B683 /* SubtitleTableViewCell.swift in Sources */,
 				FAFAFD7E23D1F8E700C4B683 /* LoadingViewController.swift in Sources */,
 				FA1B2DEA23D322FF007E7E58 /* RetryView.swift in Sources */,
 				FA1B2DEC23D35156007E7E58 /* NavigationController.swift in Sources */,
+				FA05669C23D5D9F000CCF07F /* CachedWebservice.swift in Sources */,
+				FA05669E23D5F13400CCF07F /* FileStorage.swift in Sources */,
 				FA05669A23D5D2F800CCF07F /* Endpoint.swift in Sources */,
 				FAFAFD7C23D1F1A500C4B683 /* View+AutoLayout.swift in Sources */,
 				FAFAFD7623D1E71B00C4B683 /* Webservice.swift in Sources */,
 				FAFAFD7A23D1EE8800C4B683 /* Constants.swift in Sources */,
-				FA1B2DE823D2CB03007E7E58 /* TableViewDataSource.swift in Sources */,
 				FAC21C0223D206C800383478 /* DetailsViewController.swift in Sources */,
 				FAFAFD6423D1E4F800C4B683 /* SceneDelegate.swift in Sources */,
 			);

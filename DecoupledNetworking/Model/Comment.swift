@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Comment: Decodable {
+struct Comment: Codable {
     let id: Int
     let name, body: String
 }
@@ -16,16 +16,10 @@ struct Comment: Decodable {
 // MARK: Resources
 extension Comment {
     static var allComments: Resource<[Comment]> {
-        return Resource(
-            url: Endpoint.items.url,
-            method: .get
-        )
+        return Resource(get: Endpoint.comments.url)
     }
     
     static func comment(with id: Int) -> Resource<Comment> {
-        return Resource(
-            url: Endpoint.item(id: id).url,
-            method: .get
-        )
+        return Resource(get: Endpoint.comment(id: id).url)
     }
 }

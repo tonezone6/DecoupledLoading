@@ -8,14 +8,13 @@
 
 import Foundation
 
-typealias Parameters = [String : Any]
-
-enum Method {
-    case get, post(Parameters)
+enum HTTPMethod<Body> {
+    case get
+    case post(Body)
 }
 
-extension Method {
-    var name: String {
+extension HTTPMethod {
+    var value: String {
         switch self {
         case .get:  return "GET"
         case .post: return "POST"
@@ -23,17 +22,36 @@ extension Method {
     }
 }
 
-struct Resource<T> {
-    let url: URL
-    let method: Method
+struct Resource<A> {
+    var request: URLRequest
+    let parse: (Data) -> A?
 }
 
-extension URLRequest {
-    init<T>(resource: Resource<T>) {
-        self.init(url: resource.url)
-        self.httpMethod = resource.method.name
-        if case let .post(parameters) = resource.method {
-            self.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
+extension Resource where A: Decodable {
+    var isGetRequest: Bool {
+        return request.httpMethod == "GET"
+    }
+    
+    // GET intializer
+    init(get url: URL) {
+        request = URLRequest(url: url)
+        parse = { data in
+            try? JSONDecoder().decode(A.self, from: data)
+        }
+    }
+    
+    // POST intializer
+    init<Body: Encodable>(post url: URL, method: HTTPMethod<Body>) {
+        request = URLRequest(url: url)
+        request.httpMethod = method.value
+        switch method {
+        case .get: ()
+        case .post(let body):
+            let encoder = JSONEncoder()
+            request.httpBody = try? encoder.encode(body)
+        }
+        parse = { data in
+            try? JSONDecoder().decode(A.self, from: data)
         }
     }
 }
@@ -46,37 +64,27 @@ extension URLSessionConfiguration {
     }
 }
 
-struct Webservice {
-    static func load<T: Decodable>(resource: Resource<T>, completion: @escaping (Result<T, Error>) -> Void) {
-        let request = URLRequest(resource: resource)
-        
-        let session = URLSession(configuration: URLSessionConfiguration.customTimeout)
-        session.dataTask(with: request) { data, response, error in
+extension URLSession {
+    func load<A: Codable>(_ resource: Resource<A>, completion: @escaping (A?) -> Void) {
+        let session = URLSession(configuration: .customTimeout)
+        session.dataTask(with: resource.request) { data, _, _ in
             DispatchQueue.main.async {
-                if let error = error {
-                    return completion(.failure(error))
-                }
-                
-                let decoder = JSONDecoder()
-                if let data = data, let value = try? decoder.decode(T.self, from: data) {
-                    completion(.success(value))
-                } else {
-                    completion(.failure(Failure.decoding))
-                }
+                completion(data.flatMap(resource.parse))
             }
         }.resume()
     }
 }
 
-enum Failure: LocalizedError {
-    case decoding
-}
+//enum WebserviceError: LocalizedError {
+//    case parsing
+//}
+//
+//extension WebserviceError {
+//    var errorDescription: String? {
+//        switch self {
+//        case .parsing:
+//            return "There was an error reading the data."
+//        }
+//    }
+//}
 
-extension Failure {
-    var errorDescription: String? {
-        switch self {
-        case .decoding:
-            return "There was an error reading the data."
-        }
-    }
-}

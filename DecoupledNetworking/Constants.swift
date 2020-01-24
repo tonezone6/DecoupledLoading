@@ -10,7 +10,7 @@ import Foundation
 
 enum Constants {
     enum Titles: String {
-        case items = "Comments"
+        case comments = "Comments"
         case details = "Details"
     }
 }

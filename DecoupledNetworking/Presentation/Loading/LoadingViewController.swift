@@ -8,11 +8,13 @@
 
 import UIKit
 
-final class LoadingViewController<T: Decodable>: UIViewController {
+final class LoadingViewController<T: Codable>: UIViewController {
     typealias Build = (T) -> UIViewController
         
     private var resource: Resource<T>
     private var build: Build
+    
+    private var webservice: CachedWebservice
     
     private var spinner = UIActivityIndicatorView(style: .large)
     private var retry: RetryView?
@@ -20,6 +22,9 @@ final class LoadingViewController<T: Decodable>: UIViewController {
     init(resource: Resource<T>, build: @escaping Build) {
         self.resource = resource
         self.build = build
+        
+        webservice = CachedWebservice()
+
         super.init(nibName: nil, bundle: nil)
         
         loadResource()
@@ -33,11 +38,7 @@ final class LoadingViewController<T: Decodable>: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor(white: 0.94, alpha: 1.0)
-        
-        spinner.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(spinner)
-        spinner.center(to: view)
-        spinner.hidesWhenStopped = true
+        setupSpinner()
     }
 }
 
@@ -51,7 +52,7 @@ extension LoadingViewController: RetryViewDelegate {
 extension LoadingViewController {
     func loadResource() {
         spinner.startAnimating()
-        Webservice.load(resource: resource) { [weak self] result in
+        webservice.load(resource) { [weak self] result in
             self?.spinner.stopAnimating()
             switch result {
             case .failure(let error):
@@ -77,17 +78,24 @@ extension LoadingViewController {
         }
     }
     
+    private func setupSpinner() {
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(spinner)
+        spinner.center(to: view)
+        
+        spinner.hidesWhenStopped = true
+    }
+    
     private func displayRetry(with message: String) {
         retry = RetryView(message: message)
-        guard let retry = retry else { return }
+        guard let rView = retry else { return }
         
-        retry.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(retry)
-        retry.widthAnchor.constraint(
-            equalTo: view.widthAnchor, multiplier: 0.7).isActive = true
-        retry.center(to: view)
+        rView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(rView)
+        rView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7).isActive = true
+        rView.center(to: view)
         
-        retry.delegate = self
+        rView.delegate = self
     }
 }
 

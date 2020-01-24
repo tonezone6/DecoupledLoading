@@ -9,8 +9,8 @@
 import Foundation
 
 enum Endpoint {
-    case items
-    case item(id: Int)
+    case comments
+    case comment(id: Int)
 }
 
 extension Endpoint {
@@ -22,9 +22,9 @@ extension Endpoint {
 extension Endpoint {
     var url: URL {
         switch self {
-        case .items:
+        case .comments:
             return URL(string: base + "comments")!
-        case .item(let id):
+        case .comment(let id):
             return URL(string: base + "comments/\(id)")!
         }
     }
