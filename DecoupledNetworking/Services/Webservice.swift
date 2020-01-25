@@ -63,13 +63,12 @@ extension URLSessionConfiguration {
 extension URLSession {
     func load<A: Codable>(_ resource: Resource<A>, completion: @escaping (Result<A, Error>) -> ()) {
         let session = URLSession(configuration: .customTimeout)
-        session.dataTask(with: resource.request) { data, _, _ in
+        session.dataTask(with: resource.request) { data, _, error in
             DispatchQueue.main.async {
-//                completion(data.flatMap(resource.parse))
-                guard let data = data else {
-                    return completion(.failure(WebserviceError.noDataFound))
+                if let error = error {
+                    return completion(.failure(error))
                 }
-                guard let value = resource.parse(data) else {
+                guard let data = data, let value = resource.parse(data) else {
                     return completion(.failure(WebserviceError.cannotParseData))
                 }
                 completion(.success(value))

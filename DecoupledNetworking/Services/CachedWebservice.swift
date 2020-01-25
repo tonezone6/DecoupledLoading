@@ -52,7 +52,7 @@ struct CachedWebservice {
     
     func load<A: Codable>(_ resource: Resource<A>, update: @escaping (Result<A, Error>) -> ()) {
         if let result = cache.load(resource) {
-            print("...cache hit")
+            print("cache hit!")
             return update(.success(result))
         }
         
