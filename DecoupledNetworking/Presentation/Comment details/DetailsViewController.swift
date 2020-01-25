@@ -9,16 +9,17 @@
 import UIKit
 
 final class DetailsViewController: UIViewController {
-    private var coordinator: AppCoordinator?
-    
     private var cardView: CardView!
 
-    convenience init(coordinator: AppCoordinator?, comment: Comment) {
-        self.init()
-        self.coordinator = coordinator
+    init(comment: Comment) {
         self.cardView = CardView(text: comment.body)
+        super.init(nibName: nil, bundle: nil)
     }
-
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

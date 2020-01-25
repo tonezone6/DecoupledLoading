@@ -24,29 +24,20 @@ final class AppCoordinator: Coordinator {
     }
     
     func start() {
-        let loadingVC = LoadingViewController(
+        let vc = LoadingViewController(
             resource: Comment.allComments,
             build: { comments in
-                let commentsVC = TableViewController(items: comments) { (cell: SubtitleTableViewCell, comment) in
-                    cell.configure(id: comment.id, subtitle: comment.name)
-                }
-                commentsVC.view.backgroundColor = .clear
-                commentsVC.didSelect = { [weak self] comment in
-                    self?.pushDetails(item: comment)
-                }
-                return commentsVC
+                return CommentsViewController(comments: comments, coordinator: self)
             }
         )
-        loadingVC.title = Constants.Titles.comments.rawValue
-        navigationController.pushViewController(loadingVC, animated: false)
+        vc.title = Constants.Titles.comments.rawValue
+        navigationController.pushViewController(vc, animated: false)
     }
     
-    private func pushDetails(item: Comment) {
+    func pushDetails(id: Int) {
         let vc = LoadingViewController(
-            resource: Comment.comment(with: item.id),
-            build: { comment in
-                DetailsViewController(coordinator: self, comment: comment)
-            }
+            resource: Comment.comment(with: id),
+            build: DetailsViewController.init
         )
         vc.title = Constants.Titles.details.rawValue
         navigationController.pushViewController(vc, animated: true)

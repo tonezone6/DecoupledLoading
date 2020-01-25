@@ -8,12 +8,8 @@
 
 import UIKit
 
-protocol RetryViewDelegate: class {
-    func headsupViewDidTapRetry(_: RetryView)
-}
-
 final class RetryView: UIView {
-    weak var delegate: RetryViewDelegate?
+    private var buttonTapped: (() -> ())?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,13 +19,14 @@ final class RetryView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(message: String) {
+    convenience init(message: String, buttonTapped: @escaping () -> ()) {
         self.init()
-        setup(with: message)
+        self.setup(with: message)
+        self.buttonTapped = buttonTapped
     }
     
     @objc private func retryTapped(sender: UIButton) {
-        delegate?.headsupViewDidTapRetry(self)
+        buttonTapped?()
     }
     
     private func setup(with message: String) {
@@ -49,7 +46,7 @@ final class RetryView: UIView {
         let button = UIButton(type: .custom)
         button.backgroundColor = .white
         button.setTitleColor(.systemBlue, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16) //, weight: .medium)
+        button.titleLabel?.font = .systemFont(ofSize: 16)
         button.setTitle("Retry", for: .normal)
         button.layer.cornerRadius = 6.0
         button.addTarget(self, action: #selector(retryTapped(sender:)), for: .touchUpInside)

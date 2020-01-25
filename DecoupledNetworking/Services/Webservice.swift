@@ -28,10 +28,6 @@ struct Resource<A> {
 }
 
 extension Resource where A: Decodable {
-    var isGetRequest: Bool {
-        return request.httpMethod == "GET"
-    }
-    
     // GET intializer
     init(get url: URL) {
         request = URLRequest(url: url)
@@ -65,26 +61,36 @@ extension URLSessionConfiguration {
 }
 
 extension URLSession {
-    func load<A: Codable>(_ resource: Resource<A>, completion: @escaping (A?) -> Void) {
+    func load<A: Codable>(_ resource: Resource<A>, completion: @escaping (Result<A, Error>) -> ()) {
         let session = URLSession(configuration: .customTimeout)
         session.dataTask(with: resource.request) { data, _, _ in
             DispatchQueue.main.async {
-                completion(data.flatMap(resource.parse))
+//                completion(data.flatMap(resource.parse))
+                guard let data = data else {
+                    return completion(.failure(WebserviceError.noDataFound))
+                }
+                guard let value = resource.parse(data) else {
+                    return completion(.failure(WebserviceError.cannotParseData))
+                }
+                completion(.success(value))
             }
         }.resume()
     }
 }
 
-//enum WebserviceError: LocalizedError {
-//    case parsing
-//}
-//
-//extension WebserviceError {
-//    var errorDescription: String? {
-//        switch self {
-//        case .parsing:
-//            return "There was an error reading the data."
-//        }
-//    }
-//}
+enum WebserviceError: LocalizedError {
+    case cannotParseData
+    case noDataFound
+}
+
+extension WebserviceError {
+    var errorDescription: String? {
+        switch self {
+        case .cannotParseData:
+            return "There was an error reading the data."
+        case .noDataFound:
+            return "Could not found any data."
+        }
+    }
+}
 

@@ -23,7 +23,7 @@ extension Endpoint {
     var url: URL {
         switch self {
         case .comments:
-            return URL(string: base + "comments")!
+            return URL(string: base + "commentss")!
         case .comment(let id):
             return URL(string: base + "comments/\(id)")!
         }

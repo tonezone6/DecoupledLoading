@@ -14,10 +14,10 @@
 		FA1B2DE623D24A75007E7E58 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B2DE523D24A75007E7E58 /* CardView.swift */; };
 		FA1B2DEA23D322FF007E7E58 /* RetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B2DE923D322FF007E7E58 /* RetryView.swift */; };
 		FA1B2DEC23D35156007E7E58 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B2DEB23D35156007E7E58 /* NavigationController.swift */; };
-		FA6D0D6F23DACB9E00C133CB /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D0D6E23DACB9E00C133CB /* TableViewController.swift */; };
 		FA80B06B23D380A8006AFF31 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FA80B06A23D380A8006AFF31 /* README.md */; };
 		FAC21C0223D206C800383478 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC21C0123D206C800383478 /* DetailsViewController.swift */; };
 		FAC21C0823D20B9E00383478 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC21C0723D20B9E00383478 /* AppCoordinator.swift */; };
+		FAE94C2B23DCA94000A709AC /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE94C2A23DCA94000A709AC /* CommentsViewController.swift */; };
 		FAFAFD6223D1E4F800C4B683 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFAFD6123D1E4F800C4B683 /* AppDelegate.swift */; };
 		FAFAFD6423D1E4F800C4B683 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFAFD6323D1E4F800C4B683 /* SceneDelegate.swift */; };
 		FAFAFD6B23D1E4FA00C4B683 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAFAFD6A23D1E4FA00C4B683 /* Assets.xcassets */; };
@@ -38,10 +38,10 @@
 		FA1B2DE523D24A75007E7E58 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		FA1B2DE923D322FF007E7E58 /* RetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryView.swift; sourceTree = "<group>"; };
 		FA1B2DEB23D35156007E7E58 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
-		FA6D0D6E23DACB9E00C133CB /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		FA80B06A23D380A8006AFF31 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FAC21C0123D206C800383478 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		FAC21C0723D20B9E00383478 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		FAE94C2A23DCA94000A709AC /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		FAFAFD5E23D1E4F800C4B683 /* DecoupledNetworking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DecoupledNetworking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAFAFD6123D1E4F800C4B683 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAFAFD6323D1E4F800C4B683 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,7 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				FAFAFD8323D2039700C4B683 /* SubtitleTableViewCell.swift */,
-				FA6D0D6E23DACB9E00C133CB /* TableViewController.swift */,
+				FAE94C2A23DCA94000A709AC /* CommentsViewController.swift */,
 			);
 			path = "Comment list";
 			sourceTree = "<group>";
@@ -141,8 +141,8 @@
 			isa = PBXGroup;
 			children = (
 				FA05669923D5D2F800CCF07F /* Endpoint.swift */,
-				FAFAFD7523D1E71B00C4B683 /* Webservice.swift */,
 				FA05669D23D5F13400CCF07F /* FileStorage.swift */,
+				FAFAFD7523D1E71B00C4B683 /* Webservice.swift */,
 				FA05669B23D5D9F000CCF07F /* CachedWebservice.swift */,
 			);
 			path = Services;
@@ -242,10 +242,10 @@
 				FA1B2DE623D24A75007E7E58 /* CardView.swift in Sources */,
 				FA1B2DE423D248E8007E7E58 /* EdgeInsets+Init.swift in Sources */,
 				FAFAFD7823D1EB8200C4B683 /* Comment.swift in Sources */,
-				FA6D0D6F23DACB9E00C133CB /* TableViewController.swift in Sources */,
 				FAC21C0823D20B9E00383478 /* AppCoordinator.swift in Sources */,
 				FAFAFD6223D1E4F800C4B683 /* AppDelegate.swift in Sources */,
 				FAFAFD8423D2039700C4B683 /* SubtitleTableViewCell.swift in Sources */,
+				FAE94C2B23DCA94000A709AC /* CommentsViewController.swift in Sources */,
 				FAFAFD7E23D1F8E700C4B683 /* LoadingViewController.swift in Sources */,
 				FA1B2DEA23D322FF007E7E58 /* RetryView.swift in Sources */,
 				FA1B2DEC23D35156007E7E58 /* NavigationController.swift in Sources */,
