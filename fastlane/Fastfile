@@ -1,0 +1,34 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+lane :beta do
+    get_certificates(
+        username: "alexandru.stratu+1@udevoffice.ro"
+    )
+    get_provisioning_profile(
+        username: "alexandru.stratu+1@udevoffice.ro",
+        app_identifier: "com.udevoffice.decoupled.net"
+    )
+    build_app
+    diawi(
+        token: "A1gHcmSwKkpcx9KfjBv7DO2J7Jul0Q4VFEGCg7dtzV",
+        file: lane_context[SharedValues::IPA_OUTPUT_PATH]
+    )
+    slack(
+        message: "iOS build 👉" + lane_context[SharedValues::UPLOADED_FILE_LINK_TO_DIAWI], slack_url: "https://hooks.slack.com/services/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"
+    )
+end

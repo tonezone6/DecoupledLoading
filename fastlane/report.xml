@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="fastlane.lanes">
+    
+    
+    
+      
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.001937">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="1: get_certificates" time="22.14229">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="2: get_provisioning_profile" time="8.1847">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="3: build_app" time="7.875455">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="4: diawi" time="2.72375">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="5: slack" time="0.360726">
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>
