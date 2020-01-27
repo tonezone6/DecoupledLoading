@@ -15,13 +15,16 @@
 
 default_platform(:ios)
 
-lane :beta do
+desc "Build and upload the release to Diawi for internal testing, then send URL to Slack channel"
+lane :dev do
     get_certificates(
-        username: "alexandru.stratu+1@udevoffice.ro"
+        username: "alexandru.stratu+1@udevoffice.ro",
+        team_id: "V8446ZTNQ4"
     )
     get_provisioning_profile(
         username: "alexandru.stratu+1@udevoffice.ro",
-        app_identifier: "com.udevoffice.decoupled.net"
+        app_identifier: "com.udevoffice.decoupled.net",
+        team_id: "V8446ZTNQ4"
     )
     build_app
     diawi(
@@ -29,6 +32,7 @@ lane :beta do
         file: lane_context[SharedValues::IPA_OUTPUT_PATH]
     )
     slack(
-        message: "iOS build 👉" + lane_context[SharedValues::UPLOADED_FILE_LINK_TO_DIAWI], slack_url: "https://hooks.slack.com/services/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"
+        message: "*** iOS app *** ready to download on Diawi: " + lane_context[SharedValues::UPLOADED_FILE_LINK_TO_DIAWI], slack_url: "https://hooks.slack.com/services/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"
     )
+    clean_build_artifacts
 end

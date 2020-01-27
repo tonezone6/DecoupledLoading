@@ -15,11 +15,11 @@ Install _fastlane_ using
 or alternatively using `brew cask install fastlane`
 
 # Available Actions
-### beta
+### dev
 ```
-fastlane beta
+fastlane dev
 ```
-
+Build and upload the release to Diawi for internal testing, then send URL to Slack channel
 
 ----
 
