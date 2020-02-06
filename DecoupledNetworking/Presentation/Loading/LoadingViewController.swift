@@ -12,6 +12,7 @@ final class LoadingViewController<A: Codable>: UIViewController {
     private var spinner: UIActivityIndicatorView!
     private var retry: RetryView?
     
+    private var webservice: CachedWebservice!
     private var resource: Resource<A>
     private var build: (A) -> UIViewController
     
@@ -20,7 +21,8 @@ final class LoadingViewController<A: Codable>: UIViewController {
         self.build = build
         super.init(nibName: nil, bundle: nil)
         
-        setup()
+        setupWebservice()
+        setupSpinner()
         startLoading()
     }
     
@@ -31,7 +33,8 @@ final class LoadingViewController<A: Codable>: UIViewController {
     private func startLoading() {
         retry?.removeFromSuperview()
         spinner.startAnimating()
-        CachedWebservice().load(resource) { [weak self] result in
+        
+        webservice.load(resource) { [weak self] result in
             guard let self = self else { return }
             self.spinner.stopAnimating()
             switch result {
@@ -55,7 +58,13 @@ final class LoadingViewController<A: Codable>: UIViewController {
         }
     }
     
-    private func setup() {
+    private func setupWebservice() {
+        let storage = Filestorage()
+        let cache = ResourceCache(storage: storage)
+        webservice = CachedWebservice(cache: cache)
+    }
+    
+    private func setupSpinner() {
         view.backgroundColor = UIColor(white: 0.94, alpha: 1.0)
         
         spinner = UIActivityIndicatorView(style: .large)
