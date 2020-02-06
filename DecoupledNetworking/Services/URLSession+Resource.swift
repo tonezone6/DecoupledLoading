@@ -21,7 +21,7 @@ extension Resource where A: Decodable {
         }
     }
     
-    init<B: Encodable>(post url: URL, body: B) {
+    init<B: Encodable>(url: URL, body: B) {
         request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = try? JSONEncoder().encode(body)

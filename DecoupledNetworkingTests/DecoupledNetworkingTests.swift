@@ -16,11 +16,11 @@ class DecoupledNetworkingTests: XCTestCase {
 
     func testApiCallFailure() {
         let url = URL(fileURLWithPath: "url")
-        let resource = Resource<Comment>(get: url)
+        let resource = Resource<Comment>(url: url)
         
         let session = MockURLSession()
         session.error = MockError.unknown
-        session.load(resource) {
+        session.request(resource) {
             if case .failure(let error) = $0 {
                 return XCTAssertEqual(error.localizedDescription, "Unknown error.")
             }
@@ -30,7 +30,7 @@ class DecoupledNetworkingTests: XCTestCase {
     
     func testApiCallDecodingError() {
         let url = URL(fileURLWithPath: "url")
-        let resource = Resource<Comment>(get: url)
+        let resource = Resource<Comment>(url: url)
         
         let session = MockURLSession()
         session.data = """
@@ -40,7 +40,7 @@ class DecoupledNetworkingTests: XCTestCase {
             "body": "body"
         }
         """.data(using: .utf8)
-        session.load(resource) {
+        session.request(resource) {
             if case .failure(let error) = $0 {
                 return XCTAssertEqual(error.localizedDescription, "The data couldn’t be read because it isn’t in the correct format.")
             }
@@ -50,7 +50,7 @@ class DecoupledNetworkingTests: XCTestCase {
     
     func testApiCallSuccess() {
         let url = URL(fileURLWithPath: "url")
-        let resource = Resource<Comment>(get: url)
+        let resource = Resource<Comment>(url: url)
         
         let session = MockURLSession()
         session.data = """
@@ -63,8 +63,7 @@ class DecoupledNetworkingTests: XCTestCase {
         
         let exp = expectation(description: "exp")
 
-        session.load(resource) {
-            print($0)
+        session.request(resource) {
             exp.fulfill()
             if case .success(let output) = $0 {
                 XCTAssertEqual(output.id, 1)
