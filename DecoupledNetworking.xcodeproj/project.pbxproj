@@ -14,8 +14,10 @@
 		FA1B2DE623D24A75007E7E58 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B2DE523D24A75007E7E58 /* CardView.swift */; };
 		FA1B2DEA23D322FF007E7E58 /* RetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B2DE923D322FF007E7E58 /* RetryView.swift */; };
 		FA1B2DEC23D35156007E7E58 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B2DEB23D35156007E7E58 /* NavigationController.swift */; };
+		FA4F0C6D23EF1AB80028B2B7 /* SimpleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4F0C6C23EF1AB80028B2B7 /* SimpleTests.swift */; };
+		FA4F0C7523F01F5E0028B2B7 /* VisualValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4F0C7423F01F5E0028B2B7 /* VisualValidationTests.swift */; };
 		FA64E14323EB1D22007E7AEA /* String+Digest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA64E14223EB1D22007E7AEA /* String+Digest.swift */; };
-		FA64E14523EB24D4007E7AEA /* ResourceCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA64E14423EB24D4007E7AEA /* ResourceCache.swift */; };
+		FA64E14523EB24D4007E7AEA /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA64E14423EB24D4007E7AEA /* Cache.swift */; };
 		FA64E14723EB2560007E7AEA /* URLSession+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA64E14623EB2560007E7AEA /* URLSession+Mock.swift */; };
 		FA64E14F23EB28DE007E7AEA /* DecoupledNetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA64E14E23EB28DE007E7AEA /* DecoupledNetworkingTests.swift */; };
 		FA80B06B23D380A8006AFF31 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FA80B06A23D380A8006AFF31 /* README.md */; };
@@ -36,6 +38,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		FA4F0C6F23EF1AB80028B2B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FAFAFD5623D1E4F800C4B683 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FAFAFD5D23D1E4F800C4B683;
+			remoteInfo = DecoupledNetworking;
+		};
 		FA64E15123EB28DE007E7AEA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FAFAFD5623D1E4F800C4B683 /* Project object */;
@@ -53,8 +62,12 @@
 		FA1B2DE523D24A75007E7E58 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		FA1B2DE923D322FF007E7E58 /* RetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryView.swift; sourceTree = "<group>"; };
 		FA1B2DEB23D35156007E7E58 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		FA4F0C6A23EF1AB80028B2B7 /* DecoupledNetworkingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DecoupledNetworkingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA4F0C6C23EF1AB80028B2B7 /* SimpleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTests.swift; sourceTree = "<group>"; };
+		FA4F0C6E23EF1AB80028B2B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA4F0C7423F01F5E0028B2B7 /* VisualValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualValidationTests.swift; sourceTree = "<group>"; };
 		FA64E14223EB1D22007E7AEA /* String+Digest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Digest.swift"; sourceTree = "<group>"; };
-		FA64E14423EB24D4007E7AEA /* ResourceCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceCache.swift; sourceTree = "<group>"; };
+		FA64E14423EB24D4007E7AEA /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		FA64E14623EB2560007E7AEA /* URLSession+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Mock.swift"; sourceTree = "<group>"; };
 		FA64E14C23EB28DE007E7AEA /* DecoupledNetworkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DecoupledNetworkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA64E14E23EB28DE007E7AEA /* DecoupledNetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoupledNetworkingTests.swift; sourceTree = "<group>"; };
@@ -79,6 +92,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		FA4F0C6723EF1AB80028B2B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FA64E14923EB28DE007E7AEA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -96,6 +116,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA4F0C6B23EF1AB80028B2B7 /* DecoupledNetworkingUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FA4F0C6C23EF1AB80028B2B7 /* SimpleTests.swift */,
+				FA4F0C7423F01F5E0028B2B7 /* VisualValidationTests.swift */,
+				FA4F0C6E23EF1AB80028B2B7 /* Info.plist */,
+			);
+			path = DecoupledNetworkingUITests;
+			sourceTree = "<group>";
+		};
 		FA64E14D23EB28DE007E7AEA /* DecoupledNetworkingTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +168,7 @@
 				FA80B06A23D380A8006AFF31 /* README.md */,
 				FAFAFD6023D1E4F800C4B683 /* DecoupledNetworking */,
 				FA64E14D23EB28DE007E7AEA /* DecoupledNetworkingTests */,
+				FA4F0C6B23EF1AB80028B2B7 /* DecoupledNetworkingUITests */,
 				FAFAFD5F23D1E4F800C4B683 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -147,6 +178,7 @@
 			children = (
 				FAFAFD5E23D1E4F800C4B683 /* DecoupledNetworking.app */,
 				FA64E14C23EB28DE007E7AEA /* DecoupledNetworkingTests.xctest */,
+				FA4F0C6A23EF1AB80028B2B7 /* DecoupledNetworkingUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -181,10 +213,10 @@
 		FAFAFD8123D1FC9900C4B683 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				FA05669D23D5F13400CCF07F /* Filestorage.swift */,
 				FAFAFD7523D1E71B00C4B683 /* URLSession+Resource.swift */,
 				FA64E14623EB2560007E7AEA /* URLSession+Mock.swift */,
-				FA64E14423EB24D4007E7AEA /* ResourceCache.swift */,
+				FA64E14423EB24D4007E7AEA /* Cache.swift */,
+				FA05669D23D5F13400CCF07F /* Filestorage.swift */,
 				FA05669B23D5D9F000CCF07F /* CachedWebservice.swift */,
 				FA05669923D5D2F800CCF07F /* Endpoint.swift */,
 			);
@@ -215,6 +247,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		FA4F0C6923EF1AB80028B2B7 /* DecoupledNetworkingUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA4F0C7323EF1AB80028B2B7 /* Build configuration list for PBXNativeTarget "DecoupledNetworkingUITests" */;
+			buildPhases = (
+				FA4F0C6623EF1AB80028B2B7 /* Sources */,
+				FA4F0C6723EF1AB80028B2B7 /* Frameworks */,
+				FA4F0C6823EF1AB80028B2B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA4F0C7023EF1AB80028B2B7 /* PBXTargetDependency */,
+			);
+			name = DecoupledNetworkingUITests;
+			productName = DecoupledNetworkingUITests;
+			productReference = FA4F0C6A23EF1AB80028B2B7 /* DecoupledNetworkingUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		FA64E14B23EB28DE007E7AEA /* DecoupledNetworkingTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA64E15323EB28DE007E7AEA /* Build configuration list for PBXNativeTarget "DecoupledNetworkingTests" */;
@@ -260,6 +310,10 @@
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = tonezone6;
 				TargetAttributes = {
+					FA4F0C6923EF1AB80028B2B7 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = FAFAFD5D23D1E4F800C4B683;
+					};
 					FA64E14B23EB28DE007E7AEA = {
 						CreatedOnToolsVersion = 11.3.1;
 						TestTargetID = FAFAFD5D23D1E4F800C4B683;
@@ -284,11 +338,19 @@
 			targets = (
 				FAFAFD5D23D1E4F800C4B683 /* DecoupledNetworking */,
 				FA64E14B23EB28DE007E7AEA /* DecoupledNetworkingTests */,
+				FA4F0C6923EF1AB80028B2B7 /* DecoupledNetworkingUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		FA4F0C6823EF1AB80028B2B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FA64E14A23EB28DE007E7AEA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -309,6 +371,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		FA4F0C6623EF1AB80028B2B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA4F0C7523F01F5E0028B2B7 /* VisualValidationTests.swift in Sources */,
+				FA4F0C6D23EF1AB80028B2B7 /* SimpleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FA64E14823EB28DE007E7AEA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -329,7 +400,7 @@
 				FAC21C0823D20B9E00383478 /* AppCoordinator.swift in Sources */,
 				FAFAFD6223D1E4F800C4B683 /* AppDelegate.swift in Sources */,
 				FA64E14723EB2560007E7AEA /* URLSession+Mock.swift in Sources */,
-				FA64E14523EB24D4007E7AEA /* ResourceCache.swift in Sources */,
+				FA64E14523EB24D4007E7AEA /* Cache.swift in Sources */,
 				FAFAFD8423D2039700C4B683 /* SubtitleTableViewCell.swift in Sources */,
 				FAE94C2B23DCA94000A709AC /* CommentsViewController.swift in Sources */,
 				FAFAFD7E23D1F8E700C4B683 /* LoadingViewController.swift in Sources */,
@@ -349,6 +420,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		FA4F0C7023EF1AB80028B2B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FAFAFD5D23D1E4F800C4B683 /* DecoupledNetworking */;
+			targetProxy = FA4F0C6F23EF1AB80028B2B7 /* PBXContainerItemProxy */;
+		};
 		FA64E15223EB28DE007E7AEA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FAFAFD5D23D1E4F800C4B683 /* DecoupledNetworking */;
@@ -368,6 +444,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		FA4F0C7123EF1AB80028B2B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 733W6R73TS;
+				INFOPLIST_FILE = DecoupledNetworkingUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tonezone.DecoupledNetworkingUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DecoupledNetworking;
+			};
+			name = Debug;
+		};
+		FA4F0C7223EF1AB80028B2B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 733W6R73TS;
+				INFOPLIST_FILE = DecoupledNetworkingUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tonezone.DecoupledNetworkingUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DecoupledNetworking;
+			};
+			name = Release;
+		};
 		FA64E15423EB28DE007E7AEA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -565,6 +679,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		FA4F0C7323EF1AB80028B2B7 /* Build configuration list for PBXNativeTarget "DecoupledNetworkingUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA4F0C7123EF1AB80028B2B7 /* Debug */,
+				FA4F0C7223EF1AB80028B2B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FA64E15323EB28DE007E7AEA /* Build configuration list for PBXNativeTarget "DecoupledNetworkingTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

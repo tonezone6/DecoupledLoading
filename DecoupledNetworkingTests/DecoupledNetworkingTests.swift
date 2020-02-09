@@ -18,7 +18,7 @@ class DecoupledNetworkingTests: XCTestCase {
         let url = URL(fileURLWithPath: "url")
         let resource = Resource<Comment>(url: url)
         
-        let session = MockURLSession()
+        let session = URLSession.mock
         session.error = MockError.unknown
         session.request(resource) {
             if case .failure(let error) = $0 {
@@ -32,7 +32,7 @@ class DecoupledNetworkingTests: XCTestCase {
         let url = URL(fileURLWithPath: "url")
         let resource = Resource<Comment>(url: url)
         
-        let session = MockURLSession()
+        let session = URLSession.mock
         session.data = """
         {
             "id": "1",
@@ -52,7 +52,7 @@ class DecoupledNetworkingTests: XCTestCase {
         let url = URL(fileURLWithPath: "url")
         let resource = Resource<Comment>(url: url)
         
-        let session = MockURLSession()
+        let session = URLSession.mock
         session.data = """
         {
             "id": 1,

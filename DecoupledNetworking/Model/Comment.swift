@@ -16,10 +16,10 @@ struct Comment: Codable {
 // MARK: Resources
 extension Comment {
     static var allComments: Resource<[Comment]> {
-        return Resource(url: Endpoint.comments.url)
+        return Resource(with: Endpoint.comments.url)
     }
     
     static func comment(with id: Int) -> Resource<Comment> {
-        return Resource(url: Endpoint.comment(id: id).url)
+        return Resource(with: Endpoint.comment(id: id).url)
     }
 }

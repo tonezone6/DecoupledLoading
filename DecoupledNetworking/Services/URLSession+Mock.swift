@@ -14,22 +14,35 @@ class MockURLSessionDataTask: URLSessionDataTask {
     init(closure: @escaping () -> Void) {
         self.closure = closure
     }
-
+    
     override func resume() {
-        self.closure() // calling our closure instead of resuming any task
+        // calling our closure instead of resuming any task
+        self.closure()
     }
 }
 
 class MockURLSession: URLSession {
     var data: Data?
     var error: Error?
+    
+    private var config: URLSessionConfiguration
+    
+    init(configuration: URLSessionConfiguration) {
+        self.config = configuration
+    }
 
     typealias Completion = (Data?, URLResponse?, Error?) -> Void
-    
+
     override func dataTask(with request: URLRequest, completionHandler: @escaping Completion) -> URLSessionDataTask {
-        return MockURLSessionDataTask {
+        MockURLSessionDataTask {
             completionHandler(self.data, nil, self.error)
         }
+    }
+}
+
+extension URLSession {
+    static var mock: MockURLSession {
+        MockURLSession(configuration: .default)
     }
 }
 
@@ -40,8 +53,7 @@ enum MockError: LocalizedError {
 extension MockError {
     var errorDescription: String? {
         switch self {
-        case .unknown:
-            return "Unknown error."
+        case .unknown: return "Unknown error."
         }
     }
 }

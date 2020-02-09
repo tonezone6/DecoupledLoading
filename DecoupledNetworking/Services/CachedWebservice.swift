@@ -8,28 +8,33 @@
 
 import Foundation
 
+extension URLSession {
+    static var shortTimeout: URLSession {
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 8.0
+        return URLSession(configuration: configuration)
+    }
+}
+
 class CachedWebservice {
-    private var cache: ResourceCache
+    private var cache: Cache
     
-    init(cache: ResourceCache) {
+    init(cache: Cache) {
         self.cache = cache
     }
     
-    func load<A: Codable>(_ resource: Resource<A>, update: @escaping (Result<A, Error>) -> Void) {
+    func load<A: Codable>(_ resource: Resource<A>, completion: @escaping (Result<A, Error>) -> Void) {
         if let result = cache.load(resource) {
-            print("cache hit!")
-            return update(.success(result))
+            print(">>> cache hit <<<")
+            return completion(.success(result))
         }
-        
         URLSession.shortTimeout.request(resource) { result in
             switch result {
-            case .failure(let error):
-                update(.failure(error))
+            case .failure(let error): completion(.failure(error))
             case .success(let value):
-                let encoder = JSONEncoder()
-                if let data = try? encoder.encode(value) {
+                if let data = try? JSONEncoder().encode(value) {
                     self.cache.save(data, for: resource)
-                    update(.success(value))
+                    completion(.success(value))
                 }
             }
         }

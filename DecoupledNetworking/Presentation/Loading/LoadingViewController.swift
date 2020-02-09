@@ -60,7 +60,7 @@ final class LoadingViewController<A: Codable>: UIViewController {
     
     private func setupWebservice() {
         let storage = Filestorage()
-        let cache = ResourceCache(storage: storage)
+        let cache = Cache(storage: storage)
         webservice = CachedWebservice(cache: cache)
     }
     

@@ -14,14 +14,14 @@ struct Resource<A> {
 }
 
 extension Resource where A: Decodable {
-    init(url: URL) {
+    init(with url: URL) {
         request = URLRequest(url: url)
         parse = { data in
             Result { try JSONDecoder().decode(A.self, from: data) }
         }
     }
     
-    init<B: Encodable>(url: URL, body: B) {
+    init<B: Encodable>(with url: URL, andBody body: B) {
         request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = try? JSONEncoder().encode(body)
@@ -39,13 +39,5 @@ extension URLSession {
                 completion(result)
             }
         }.resume()
-    }
-}
-
-extension URLSession {
-    static var shortTimeout: URLSession {
-        let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = 8.0
-        return URLSession(configuration: configuration)
     }
 }

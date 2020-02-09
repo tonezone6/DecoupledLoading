@@ -8,9 +8,9 @@
 
 import Foundation
 
-protocol Storage {
+protocol Storing {
     subscript(key: String) -> Data? { get set }
-    func clear()
+    func clear() throws
 }
 
 struct Filestorage {
@@ -36,13 +36,9 @@ struct Filestorage {
         }
     }
     
-    func clear() {
-        do {
-            try FileManager.default.removeItem(at: base)
-        } catch(let error) {
-            print("filestorage ", error.localizedDescription)
-        }
+    func clear() throws {
+        try FileManager.default.removeItem(at: base)
     }
 }
 
-extension Filestorage: Storage {}
+extension Filestorage: Storing {}

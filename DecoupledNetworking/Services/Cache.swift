@@ -9,34 +9,33 @@
 import Foundation
 
 extension Resource {
+    var keyPrefix: String {
+        return "cache-"
+    }
+    
     var cacheKey: String? {
         guard let urlDescription = request.url?.description,
             let digest = urlDescription.sha1Digest else { return nil }
-        return "cache-" + digest
-    }
-    
-    var isGetRequest: Bool {
-        return request.httpMethod?.lowercased() == "get"
+        return keyPrefix + digest
     }
 }
 
-struct ResourceCache {
-    private var storage: Storage
+struct Cache {
+    private var storage: Storing
     
-    init(storage: Storage) {
+    init(storage: Storing) {
         self.storage = storage
     }
     
     func load<A: Codable>(_ resource: Resource<A>) -> A? {
-        guard resource.isGetRequest, let key = resource.cacheKey, let data = storage[key] else { return nil }
-        print("cache loaded", key)
-        let decoder = JSONDecoder()
-        return try? decoder.decode(A.self, from: data)
+        guard let key = resource.cacheKey,
+            let data = storage[key] else { return nil }
+        return try? JSONDecoder().decode(A.self, from: data)
     }
     
     mutating func save<A: Decodable>(_ data: Data, for resource: Resource<A>) {
-        guard resource.isGetRequest, let key = resource.cacheKey else { return }
-        print("cache saved", key)
+        guard resource.request.httpMethod?.lowercased() == "get",
+            let key = resource.cacheKey else { return }
         storage[key] = data
     }
 }
