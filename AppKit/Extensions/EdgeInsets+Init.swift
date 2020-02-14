@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIEdgeInsets {
+public extension UIEdgeInsets {
     init(value: CGFloat) {
         self.init(top: value, left: value, bottom: value, right: value)
     }

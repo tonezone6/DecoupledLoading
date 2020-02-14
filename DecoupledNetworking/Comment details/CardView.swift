@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AppKit
 
 final class CardView: UIView {
     private let label = UILabel()

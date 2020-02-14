@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIView {
+public extension UIView {
     func constrainEdges(to view: UIView, insets: UIEdgeInsets = .zero) {
         leadingAnchor.constraint(
             equalTo: view.leadingAnchor, constant: insets.left

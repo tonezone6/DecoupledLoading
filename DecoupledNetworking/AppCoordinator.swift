@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Networking
+import AppKit
 
 protocol Coordinator {
     var childCoordinators: [Coordinator] { get set }
@@ -23,23 +25,32 @@ final class AppCoordinator: Coordinator {
         self.navigationController = navigationController
     }
     
+    var cachedservice: CachedWebservice {
+        let filestorage = Filestorage()
+        let cache = Cache(storage: filestorage)
+        return CachedWebservice(cache: cache)
+    }
+    
     func start() {
+        let resource = Comment.allComments
         let vc = LoadingViewController(
-            resource: Comment.allComments,
-            build: { comments in
-                return CommentsViewController(comments: comments, coordinator: self)
-            }
+            loading: { self.cachedservice.load(resource, completion: $0) },
+            building: { CommentsViewController(comments: $0, coordinator: self) }
         )
-        vc.title = Constants.Titles.comments.rawValue
+        vc.title = "Comments"
         navigationController.pushViewController(vc, animated: false)
     }
     
     func pushDetails(id: Int) {
+        let resource = Comment.comment(with: id)
         let vc = LoadingViewController(
-            resource: Comment.comment(with: id),
-            build: DetailsViewController.init
+            loading: { self.cachedservice.load(resource, completion: $0) },
+            building: DetailsViewController.init
         )
-        vc.title = Constants.Titles.details.rawValue
+        vc.title = "Details"
         navigationController.pushViewController(vc, animated: true)
     }
 }
+
+extension Filestorage: Storing {}
+

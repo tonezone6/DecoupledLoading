@@ -48,6 +48,16 @@
                ReferencedContainer = "container:DecoupledNetworking.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "FA36E08C23F0837000A58E43"
+               BuildableName = "DecoupledNetworkingKitTests.xctest"
+               BlueprintName = "DecoupledNetworkingKitTests"
+               ReferencedContainer = "container:DecoupledNetworking.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import AppKit
 
 final class DetailsViewController: UIViewController {
     private var cardView: CardView!
 
-    init(comment: Comment) {
-        self.cardView = CardView(text: comment.body)
+    init(comments: [Comment]) {
+        if let comment = comments.first {
+            cardView = CardView(text: comment.body)
+        }
         super.init(nibName: nil, bundle: nil)
     }
     

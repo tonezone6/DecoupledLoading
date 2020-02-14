@@ -7,25 +7,25 @@
 //
 
 import Foundation
+import Networking
 
 extension URLSession {
-    static var shortTimeout: URLSession {
+    public static var shortTimeout: URLSession {
         let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = 8.0
+        configuration.timeoutIntervalForRequest = 6.0
         return URLSession(configuration: configuration)
     }
 }
 
-class CachedWebservice {
+public class CachedWebservice {
     private var cache: Cache
     
-    init(cache: Cache) {
+    public init(cache: Cache) {
         self.cache = cache
     }
     
-    func load<A: Codable>(_ resource: Resource<A>, completion: @escaping (Result<A, Error>) -> Void) {
-        if let result = cache.load(resource) {
-            print(">>> cache hit <<<")
+    public func load<A: Codable>(_ resource: Resource<A>, completion: @escaping (Result<A, Error>) -> Void) {
+        if let result = cache.load(resource) { print(">>> cache hit <<<")
             return completion(.success(result))
         }
         URLSession.shortTimeout.request(resource) { result in
