@@ -51,6 +51,3 @@ final class AppCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
 }
-
-extension Filestorage: Storing {}
-

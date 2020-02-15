@@ -25,15 +25,15 @@ public class CachedWebservice {
     }
     
     public func load<A: Codable>(_ resource: Resource<A>, completion: @escaping (Result<A, Error>) -> Void) {
-        if let result = cache.load(resource) { print(">>> cache hit <<<")
+        if let result = try? cache.load(resource) { print(">>> cache hit <<<")
             return completion(.success(result))
         }
         URLSession.shortTimeout.request(resource) { result in
             switch result {
             case .failure(let error): completion(.failure(error))
             case .success(let value):
-                if let data = try? JSONEncoder().encode(value) {
-                    self.cache.save(data, for: resource)
+                if let data = try? JSONEncoder().encode(value),
+                    let _ = try? self.cache.save(data, for: resource) {
                     completion(.success(value))
                 }
             }

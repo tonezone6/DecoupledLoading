@@ -644,8 +644,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/tonezone6/Networking.git";
 			requirement = {
-				kind = revision;
-				revision = cef74af1f66a2e93d11fa51357fe63f97f29cc81;
+				branch = master;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
