@@ -13,26 +13,24 @@ import AppKit
 final class LoadingViewController<A: Codable>: UIViewController {
     typealias Loading = (@escaping (Result<A, Error>) -> ()) -> ()
     typealias Building = (A) -> UIViewController
-    
+
+    private var loadingView: LoadingView
     private var loading: Loading
     private var building: Building
-    
-    private var loadingView: LoadingView
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     init(loading: @escaping Loading, building: @escaping Building) {
+        self.loadingView = LoadingView()
         self.loading = loading
         self.building = building
-        self.loadingView = LoadingView()
         
         super.init(nibName: nil, bundle: nil)
-    
-        startLoading()
+        load()
         loadingView.retryCallback = { [weak self] in
-            self?.startLoading()
+            self?.load()
         }
     }
     
@@ -41,17 +39,17 @@ final class LoadingViewController<A: Codable>: UIViewController {
         view = loadingView
     }
     
-    private func startLoading() {
+    private func load() {
         loadingView.startLoading()
         loading() { [weak self] result in
-            guard let self = self else { return }
-            
-            self.loadingView.stopLoading()
+            self?.loadingView.stopLoading()
             switch result {
             case .failure(let error):
-                self.loadingView.display(error)
+                self?.loadingView.display(error)
             case .success(let value):
-                self.add(content: self.building(value))
+                if let controller = self?.building(value) {
+                    self?.add(content: controller)
+                }
             }
         }
     }
