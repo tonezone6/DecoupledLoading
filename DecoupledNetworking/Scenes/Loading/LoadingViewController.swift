@@ -7,14 +7,13 @@
 //
 
 import UIKit
-import Networking
-import AppKit
 
 final class LoadingViewController<A: Codable>: UIViewController {
     typealias Loading = (@escaping (Result<A, Error>) -> ()) -> ()
     typealias Building = (A) -> UIViewController
 
     private var loadingView: LoadingView
+   
     private var loading: Loading
     private var building: Building
     
@@ -42,13 +41,15 @@ final class LoadingViewController<A: Codable>: UIViewController {
     private func load() {
         loadingView.startLoading()
         loading() { [weak self] result in
-            self?.loadingView.stopLoading()
-            switch result {
-            case .failure(let error):
-                self?.loadingView.display(error)
-            case .success(let value):
-                if let controller = self?.building(value) {
-                    self?.add(content: controller)
+            DispatchQueue.main.async {
+                self?.loadingView.stopLoading()
+                switch result {
+                case .failure(let error):
+                    self?.loadingView.display(error)
+                case .success(let value):
+                    if let controller = self?.building(value) {
+                        self?.add(content: controller)
+                    }
                 }
             }
         }

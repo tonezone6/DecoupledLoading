@@ -7,20 +7,17 @@
 //
 
 import UIKit
-import AppKit
 
 final class DetailsViewController: UIViewController {
-    private var cardView: CardView!
-
-    init(comments: [Comment]) {
-        if let comment = comments.first {
-            cardView = CardView(text: comment.body)
-        }
-        super.init(nibName: nil, bundle: nil)
-    }
+    private var cardView: CardView
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    init(comments: [Comment]) {
+        cardView = CardView(text: comments.first?.body)
+        super.init(nibName: nil, bundle: nil)
     }
     
     override func viewDidLoad() {

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AppKit
 
 final class CommentsViewController: UITableViewController {
     private var coordinator: AppCoordinator
