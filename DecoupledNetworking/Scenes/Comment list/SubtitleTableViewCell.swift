@@ -23,13 +23,13 @@ final class SubtitleTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func configure(id: Int, subtitle: String) {
+    public func configure(with comment: Comment) {
         let formatter = NumberFormatter()
         formatter.numberStyle = .spellOut
-        let title = formatter.string(from: NSNumber(value: id))
+        let title = formatter.string(from: NSNumber(value: comment.id))
         
         titleLabel.text = title?.capitalized
-        subtitleLabel.text = subtitle.capitalized
+        subtitleLabel.text = comment.name
     }
     
     private func setup() {

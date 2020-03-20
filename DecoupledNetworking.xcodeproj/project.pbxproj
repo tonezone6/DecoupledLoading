@@ -14,8 +14,10 @@
 		FA3F0ED5241E61EE006FFE24 /* View+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFAFD7B23D1F1A500C4B683 /* View+AutoLayout.swift */; };
 		FA3F0ED6241E61EE006FFE24 /* EdgeInsets+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B2DE323D248E8007E7E58 /* EdgeInsets+Init.swift */; };
 		FA3F0ED7241E61EE006FFE24 /* URLSessionServer+Typicode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36E07E23F0801000A58E43 /* URLSessionServer+Typicode.swift */; };
+		FA651AC32424D4F8006F5EEF /* CommentsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA651AC22424D4F8006F5EEF /* CommentsDataSource.swift */; };
 		FA80B06B23D380A8006AFF31 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FA80B06A23D380A8006AFF31 /* README.md */; };
 		FABF3488241FCAC00029D981 /* SimpleCachedNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = FABF3487241FCAC00029D981 /* SimpleCachedNetworking */; };
+		FABF813F24250447004ABBE2 /* CommentsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF813E24250447004ABBE2 /* CommentsDelegate.swift */; };
 		FAC21C0223D206C800383478 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC21C0123D206C800383478 /* DetailsViewController.swift */; };
 		FAC21C0823D20B9E00383478 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC21C0723D20B9E00383478 /* AppCoordinator.swift */; };
 		FAE94C2B23DCA94000A709AC /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE94C2A23DCA94000A709AC /* CommentsViewController.swift */; };
@@ -46,8 +48,10 @@
 		FA1B2DEB23D35156007E7E58 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		FA29354C23F7237B00236B18 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		FA36E07E23F0801000A58E43 /* URLSessionServer+Typicode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionServer+Typicode.swift"; sourceTree = "<group>"; };
+		FA651AC22424D4F8006F5EEF /* CommentsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsDataSource.swift; sourceTree = "<group>"; };
 		FA80B06A23D380A8006AFF31 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FAA6460C23F1798B00FC66AF /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		FABF813E24250447004ABBE2 /* CommentsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsDelegate.swift; sourceTree = "<group>"; };
 		FAC21C0123D206C800383478 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		FAC21C0723D20B9E00383478 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		FAE94C2A23DCA94000A709AC /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
@@ -75,18 +79,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FA3F0ED8241E6434006FFE24 /* Model types */ = {
+		FA3F0ED8241E6434006FFE24 /* Model objects */ = {
 			isa = PBXGroup;
 			children = (
 				FAFAFD7723D1EB8200C4B683 /* Comment.swift */,
 			);
-			path = "Model types";
+			path = "Model objects";
 			sourceTree = "<group>";
 		};
 		FA3F0ED9241E6476006FFE24 /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
-				FA3F0ED8241E6434006FFE24 /* Model types */,
+				FA3F0ED8241E6434006FFE24 /* Model objects */,
 				FAA6461123F17A1900FC66AF /* Extensions */,
 				FAFAFD6123D1E4F800C4B683 /* AppDelegate.swift */,
 				FAFAFD6323D1E4F800C4B683 /* SceneDelegate.swift */,
@@ -137,6 +141,8 @@
 			isa = PBXGroup;
 			children = (
 				FAFAFD8323D2039700C4B683 /* SubtitleTableViewCell.swift */,
+				FABF813E24250447004ABBE2 /* CommentsDelegate.swift */,
+				FA651AC22424D4F8006F5EEF /* CommentsDataSource.swift */,
 				FAE94C2A23DCA94000A709AC /* CommentsViewController.swift */,
 			);
 			path = "Comment list";
@@ -267,7 +273,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA651AC32424D4F8006F5EEF /* CommentsDataSource.swift in Sources */,
 				FA1B2DE623D24A75007E7E58 /* CardView.swift in Sources */,
+				FABF813F24250447004ABBE2 /* CommentsDelegate.swift in Sources */,
 				FAC21C0823D20B9E00383478 /* AppCoordinator.swift in Sources */,
 				FA3F0ED7241E61EE006FFE24 /* URLSessionServer+Typicode.swift in Sources */,
 				FAFAFD6223D1E4F800C4B683 /* AppDelegate.swift in Sources */,

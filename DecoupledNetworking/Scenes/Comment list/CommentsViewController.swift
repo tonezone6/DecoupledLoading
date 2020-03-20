@@ -8,41 +8,53 @@
 
 import UIKit
 
-final class CommentsViewController: UITableViewController {
+final class CommentsViewController: UIViewController, CommentsPresenting {
     private var coordinator: AppCoordinator
     private var comments: [Comment]
+    private var tableView = UITableView()
     
-    init(comments: [Comment], coordinator: AppCoordinator) {
-        self.comments = comments
-        self.coordinator = coordinator
-        super.init(nibName: nil, bundle: nil)
-        
-        view.backgroundColor = .clear
-        tableView.separatorColor = .clear
-        tableView.register(
-            SubtitleTableViewCell.self,
-            forCellReuseIdentifier: SubtitleTableViewCell.reuseIdentifier
-        )
-    }
+    private var delegate: CommentsDelegate?
+    private var dataSource: CommentsDataSource?
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let id = comments[indexPath.row].id
-        coordinator.pushDetails(id: id)
+    init(comments: [Comment], coordinator: AppCoordinator) {
+        self.comments = comments
+        self.coordinator = coordinator
+        
+        super.init(nibName: nil, bundle: nil)
+    
+        delegate = CommentsDelegate()
+        delegate?.presenting = self
+        
+        dataSource = CommentsDataSource(
+            cell: SubtitleTableViewCell.self,
+            id: SubtitleTableViewCell.reuseIdentifier,
+            items: comments,
+            configure: { (cell, comment) in
+                cell.configure(with: comment)
+            }
+        )
+        
+        tableView.delegate = delegate
+        tableView.dataSource = dataSource
+        
+        configureViews()
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return comments.count
+    func didSelect(row: Int) {
+        coordinator.pushDetails(id: comments[row].id)
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SubtitleTableViewCell.reuseIdentifier, for: indexPath) as? SubtitleTableViewCell else { fatalError() }
-        let comment = comments[indexPath.row]
-        cell.configure(id: comment.id, subtitle: comment.name)
-        return cell
+    private func configureViews() {
+        view.backgroundColor = .clear
+       
+        view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.constrainEdges(to: view)
+        tableView.separatorColor = .clear
+        tableView.backgroundColor = .clear
     }
 }
-
